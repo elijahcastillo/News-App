@@ -6,6 +6,7 @@ import { GlobalStyles } from "./css/GlobalStyle.styled";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import postReducer from "./features/NewsSlice";
+import { ThemeProvider, withTheme } from "styled-components";
 
 const store = configureStore({
   reducer: {
@@ -17,15 +18,28 @@ const store = configureStore({
     }),
 });
 
+const theme = {
+  light: {
+    background: "white",
+    text: "black",
+  },
+  dark: {
+    background: "black",
+    text: "white",
+  },
+};
+
 function App() {
   return (
     <Provider store={store}>
       <GlobalStyles />
-      <Navbar />
-      <Container>
-        <Search />
-        <NewsList />
-      </Container>
+      <ThemeProvider theme={theme}>
+        <Navbar />
+        <Container>
+          <Search />
+          <NewsList />
+        </Container>
+      </ThemeProvider>
     </Provider>
   );
 }

@@ -25,6 +25,11 @@ export const Item = styled.div`
     gap: 8px;
   }
 
+  .infoTop p a {
+    color: white;
+    text-decoration: none;
+  }
+
   .infoBott {
     display: flex;
     justify-content: flex-end;

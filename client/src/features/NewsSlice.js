@@ -2,16 +2,17 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  loading: false,
+  loading: true,
   error: false,
   articles: [],
 };
 
-export const getPosts = createAsyncThunk("posts/getPosts", async () => {
+export const getPosts = createAsyncThunk("posts/getPosts", async (query) => {
   try {
     const res = await axios.get(
-      "https://hn.algolia.com/api/v1/search?query=react"
+      `https://hn.algolia.com/api/v1/search?query=${query ? query : "react"}`
     );
+
     return res;
   } catch (error) {
     return error;
