@@ -5,6 +5,7 @@ const initialState = {
   loading: true,
   error: false,
   articles: [],
+  currTheme: false,
 };
 
 export const getPosts = createAsyncThunk("posts/getPosts", async (query) => {
@@ -22,7 +23,11 @@ export const getPosts = createAsyncThunk("posts/getPosts", async (query) => {
 export const NewsSlice = createSlice({
   name: "news",
   initialState,
-  reducers: {},
+  reducers: {
+    changeTheme: (state) => {
+      state.currTheme = !state.currTheme;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getPosts.pending, (state, action) => {
@@ -40,3 +45,4 @@ export const NewsSlice = createSlice({
 });
 
 export default NewsSlice.reducer;
+export const { changeTheme } = NewsSlice.actions;

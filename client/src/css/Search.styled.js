@@ -14,8 +14,9 @@ export const SearchStyle = styled.div`
     height: 100%;
     width: 100%;
     border-radius: 12px;
-    border: 1px solid grey;
     padding: 5px 15px;
+    border: none;
+    background-color: ${(props) => props.theme.search};
   }
 
   .search {

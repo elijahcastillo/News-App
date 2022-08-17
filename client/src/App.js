@@ -3,44 +3,36 @@ import NewsList from "./components/NewsList";
 import Search from "./components/Search";
 import { Container } from "./css/Container.styled";
 import { GlobalStyles } from "./css/GlobalStyle.styled";
-import { configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
-import postReducer from "./features/NewsSlice";
-import { ThemeProvider, withTheme } from "styled-components";
 
-const store = configureStore({
-  reducer: {
-    posts: postReducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-});
+import { ThemeProvider } from "styled-components";
+import { useSelector } from "react-redux";
 
 const theme = {
   light: {
     background: "white",
     text: "black",
+    border: "black",
+    search: "#f2f2f2",
   },
   dark: {
-    background: "black",
+    background: "#171717",
     text: "white",
+    border: "#6e6d6d",
+    search: "#262626",
   },
 };
 
 function App() {
+  const { currTheme } = useSelector((state) => state.posts);
   return (
-    <Provider store={store}>
+    <ThemeProvider theme={currTheme ? theme.light : theme.dark}>
       <GlobalStyles />
-      <ThemeProvider theme={theme}>
-        <Navbar />
-        <Container>
-          <Search />
-          <NewsList />
-        </Container>
-      </ThemeProvider>
-    </Provider>
+      <Navbar />
+      <Container>
+        <Search />
+        <NewsList />
+      </Container>
+    </ThemeProvider>
   );
 }
 

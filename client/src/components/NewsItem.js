@@ -12,8 +12,8 @@ const NewsItem = () => {
   }, []);
   return (
     <>
-      {loading ? (
-        <div>Not Here</div>
+      {loading || error ? (
+        <div>Not Here {error}</div>
       ) : (
         articles.data.hits.map((post, i) => {
           return (

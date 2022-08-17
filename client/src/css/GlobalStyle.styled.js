@@ -9,11 +9,14 @@ export const GlobalStyles = createGlobalStyle`
 
     }
 
+
     body{
-background-color:#1a1919;
+        background-color: ${(props) => props.theme.background};
         min-height: 100vh;
         font-family: "Barlow";
         color: white;
+        transition: all 300ms;
+        font-size: 0.75em;
     }
 
     img{

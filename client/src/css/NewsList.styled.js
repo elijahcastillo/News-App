@@ -12,17 +12,18 @@ export const List = styled.div`
 export const Item = styled.div`
   width: 100%;
   height: 180px;
-  border: 1px solid #474747;
+  border: 1px solid ${(props) => props.theme.border};
   border-radius: 15px;
   padding: 20px 20px 20px 20px;
   gap: 5px;
   display: flex;
   flex-direction: column;
+  color: ${(props) => props.theme.text};
 
   .infoTop {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
   }
 
   .infoTop p a {
