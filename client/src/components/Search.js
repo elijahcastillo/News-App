@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPost, getPosts, filterPost } from "../features/NewsSlice";
 import sea from "../assets/search.png";
+
 import { useEffect } from "react";
 
 const Search = () => {
@@ -37,11 +38,13 @@ const Search = () => {
           />
         )}
       </div>
-      <div className="search">
-        <div className="searchbox">
-          <img src={sea} onClick={handleReq} />
+      {!bookView ? (
+        <div className="search">
+          <div className="searchbox">
+            <img src={sea} onClick={handleReq} />
+          </div>
         </div>
-      </div>
+      ) : null}
     </SearchStyle>
   );
 };

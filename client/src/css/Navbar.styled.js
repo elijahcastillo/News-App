@@ -39,11 +39,22 @@ export const Nav = styled.div`
   }
 
   .always {
-    padding: 1rem;
-    border-radius: 40%;
     position: fixed;
     bottom: 20px;
     right: 20px;
     cursor: pointer;
+    width: 70px;
+    height: 70px;
+    animation: fadeIn 2s infinite;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 1;
+      transform: translateY(25px);
+    }
+    100% {
+      opacity: 0;
+    }
   }
 `;

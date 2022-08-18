@@ -14,12 +14,14 @@ const theme = {
     text: "black",
     border: "black",
     search: "#f2f2f2",
+    inside: "#f2f2f285",
   },
   dark: {
     background: "#171717",
     text: "white",
-    border: "#6e6d6d",
+    border: "#6f6e6e",
     search: "#262626",
+    inside: "#131313ff",
   },
 };
 

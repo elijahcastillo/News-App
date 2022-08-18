@@ -1,7 +1,7 @@
 import { Item } from "../css/NewsList.styled";
 import { useEffect } from "react";
 import { useState } from "react";
-import { addPost } from "../features/NewsSlice";
+import { addPost, filterPost } from "../features/NewsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const LocalNews = () => {
@@ -23,12 +23,24 @@ const LocalNews = () => {
     }
   }, []);
 
+  const removePost = (idx) => {
+    try {
+      const oldinfo = JSON.parse(localStorage.getItem("bookmark"));
+
+      oldinfo.splice(idx, 1);
+      dispatch(filterPost(oldinfo));
+      localStorage.setItem("bookmark", JSON.stringify(oldinfo));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <h1 className="save">Saved Posts</h1>
       <hr></hr>
       {isValid ? (
-        savedPostsCopy.payload.map((post) => {
+        savedPostsCopy.payload.map((post, idx) => {
           return (
             <Item>
               <div className="infoTop">
@@ -42,7 +54,9 @@ const LocalNews = () => {
               </div>
 
               <div className="infoBott">
-                <button>DELETE</button>
+                <button className="del" onClick={() => removePost(idx)}>
+                  Delete
+                </button>
                 <p>{post.created_at}</p>
               </div>
             </Item>
