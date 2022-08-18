@@ -5,7 +5,9 @@ const initialState = {
   loading: true,
   error: false,
   articles: [],
-  currTheme: false,
+  currTheme: localStorage.getItem("theme")
+    ? JSON.parse(localStorage.getItem("theme"))
+    : false,
   bookView: false,
   savedPosts: [],
   savedPostsCopy: [],
@@ -45,6 +47,7 @@ export const NewsSlice = createSlice({
     },
     changeTheme: (state) => {
       state.currTheme = !state.currTheme;
+      localStorage.setItem("theme", state.currTheme);
     },
   },
   extraReducers(builder) {

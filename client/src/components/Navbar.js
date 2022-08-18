@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeTheme, bookView } from "../features/NewsSlice";
 import up from "../assets/up-arrow.png";
 import bookmark from "../assets/bookmark.png";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const { savedPostsCount } = useSelector((state) => state.posts);
+  const { savedPostsCount, currTheme } = useSelector((state) => state.posts);
 
   const themeChange = () => {
     dispatch(changeTheme());
@@ -20,6 +21,12 @@ const Navbar = () => {
   const toTop = () => {
     window.scrollTo(0, 0);
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("theme") === null) {
+      localStorage.setItem("theme", currTheme);
+    }
+  });
   return (
     <Nav count={savedPostsCount.payload}>
       <div className="logo">
