@@ -1,10 +1,13 @@
 import { Item } from "../css/NewsList.styled";
 import { useEffect } from "react";
 import { useState } from "react";
+import { addPost } from "../features/NewsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const LocalNews = () => {
+  const dispatch = useDispatch();
   const [isValid, setIsValid] = useState(false);
-  const [localArt, setLocalArt] = useState([]);
+  const { savedPosts } = useSelector((state) => state.posts);
   useEffect(() => {
     try {
       const oldinfo = JSON.parse(localStorage.getItem("bookmark"));
@@ -12,8 +15,9 @@ const LocalNews = () => {
         setIsValid(false);
         return;
       }
+      console.log("BEFORE");
+      dispatch(addPost(oldinfo));
       setIsValid(true);
-      setLocalArt(oldinfo);
     } catch (error) {
       setIsValid(false);
     }
@@ -24,7 +28,7 @@ const LocalNews = () => {
       <h1 className="save">Saved Posts</h1>
       <hr></hr>
       {isValid ? (
-        localArt.map((post) => {
+        savedPosts.payload.map((post) => {
           return (
             <Item>
               <div className="infoTop">

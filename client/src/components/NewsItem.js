@@ -1,7 +1,7 @@
 import { Item } from "../css/NewsList.styled";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "../features/NewsSlice";
+import { addPost, getPosts } from "../features/NewsSlice";
 
 const NewsItem = () => {
   const dispatch = useDispatch();
