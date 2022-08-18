@@ -7,15 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 const LocalNews = () => {
   const dispatch = useDispatch();
   const [isValid, setIsValid] = useState(false);
-  const { savedPosts } = useSelector((state) => state.posts);
+  const { savedPostsCopy } = useSelector((state) => state.posts);
   useEffect(() => {
+    console.log(savedPostsCopy);
     try {
       const oldinfo = JSON.parse(localStorage.getItem("bookmark"));
       if (oldinfo == null) {
         setIsValid(false);
         return;
       }
-      console.log("BEFORE");
       dispatch(addPost(oldinfo));
       setIsValid(true);
     } catch (error) {
@@ -28,7 +28,7 @@ const LocalNews = () => {
       <h1 className="save">Saved Posts</h1>
       <hr></hr>
       {isValid ? (
-        savedPosts.payload.map((post) => {
+        savedPostsCopy.payload.map((post) => {
           return (
             <Item>
               <div className="infoTop">

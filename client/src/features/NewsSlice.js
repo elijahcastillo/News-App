@@ -8,6 +8,7 @@ const initialState = {
   currTheme: false,
   bookView: false,
   savedPosts: [],
+  savedPostsCopy: [],
 };
 
 export const getPosts = createAsyncThunk("posts/getPosts", async (query) => {
@@ -29,7 +30,12 @@ export const NewsSlice = createSlice({
     addPost: (state, payload) => {
       console.log(payload);
       state.savedPosts = payload;
+      state.savedPostsCopy = payload;
     },
+    filterPost: (state, payload) => {
+      state.savedPostsCopy = payload;
+    },
+
     bookView: (state) => {
       state.bookView = !state.bookView;
     },
@@ -54,4 +60,4 @@ export const NewsSlice = createSlice({
 });
 
 export default NewsSlice.reducer;
-export const { bookView, changeTheme, addPost } = NewsSlice.actions;
+export const { bookView, changeTheme, addPost, filterPost } = NewsSlice.actions;
