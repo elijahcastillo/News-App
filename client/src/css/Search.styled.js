@@ -17,7 +17,7 @@ export const SearchStyle = styled.div`
     padding: 5px 15px;
     border: none;
     background-color: ${(props) => props.theme.search};
-    color: ${(props) => props.theme.textd};
+    color: ${(props) => props.theme.text};
   }
 
   .inp input:focus {

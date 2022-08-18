@@ -30,6 +30,6 @@ export const GlobalStyles = createGlobalStyle`
     .save{
         text-align: center;
         font-size: 3em;
-        
+        color: ${(props) => props.theme.text};
     }
 `;

@@ -1,13 +1,15 @@
 import { Item } from "../css/NewsList.styled";
 import { useEffect } from "react";
 import { useState } from "react";
-import { addPost, filterPost } from "../features/NewsSlice";
+import { addPost, filterPost, setCount } from "../features/NewsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const LocalNews = () => {
   const dispatch = useDispatch();
   const [isValid, setIsValid] = useState(false);
-  const { savedPostsCopy } = useSelector((state) => state.posts);
+  const { savedPostsCopy, savedPostsCount } = useSelector(
+    (state) => state.posts
+  );
   useEffect(() => {
     console.log(savedPostsCopy);
     try {
@@ -29,6 +31,8 @@ const LocalNews = () => {
 
       oldinfo.splice(idx, 1);
       dispatch(filterPost(oldinfo));
+      console.log(savedPostsCount.payload, "LL");
+      dispatch(setCount(savedPostsCount.payload - 1));
       localStorage.setItem("bookmark", JSON.stringify(oldinfo));
     } catch (error) {
       console.log(error);
