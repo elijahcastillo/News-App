@@ -6,8 +6,19 @@ import { getPosts } from "../features/NewsSlice";
 const NewsItem = () => {
   const dispatch = useDispatch();
   const { loading, error, articles } = useSelector((state) => state.posts);
+
+  const savePost = (post) => {
+    console.log(post);
+    try {
+      const oldinfo = JSON.parse(localStorage.getItem("bookmark")) || [];
+      const newinfo = [...oldinfo, post];
+      localStorage.setItem("bookmark", JSON.stringify(newinfo));
+    } catch (error) {
+      localStorage.setItem("bookmark", JSON.stringify([]));
+    }
+  };
+
   useEffect(() => {
-    console.log(loading);
     dispatch(getPosts());
   }, []);
   return (
@@ -29,6 +40,7 @@ const NewsItem = () => {
               </div>
 
               <div className="infoBott">
+                <button onClick={() => savePost(post)}>Save</button>
                 <p>{post.created_at}</p>
               </div>
             </Item>

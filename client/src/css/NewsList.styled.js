@@ -11,11 +11,11 @@ export const List = styled.div`
 
 export const Item = styled.div`
   width: 100%;
-  height: 180px;
+  min-height: 180px;
   border: 1px solid ${(props) => props.theme.border};
   border-radius: 15px;
   padding: 20px 20px 20px 20px;
-  gap: 5px;
+  gap: 30px;
   display: flex;
   flex-direction: column;
   color: ${(props) => props.theme.text};
@@ -33,8 +33,16 @@ export const Item = styled.div`
 
   .infoBott {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: flex-end;
     flex: 1;
+  }
+
+  .infoBott button {
+    padding: 6px 14px;
+    border-radius: 10px;
+    border: none;
+    background-color: green;
+    cursor: pointer;
   }
 `;

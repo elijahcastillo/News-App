@@ -11,7 +11,7 @@ export const Nav = styled.div`
   .logo {
     display: flex;
     align-items: center;
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
 
   .logo h1 {
@@ -30,10 +30,20 @@ export const Nav = styled.div`
   .links {
     display: flex;
     align-items: center;
+    gap: 30px;
   }
 
   .links img {
-    height: 45%;
+    height: 50%;
+    cursor: pointer;
+  }
+
+  .always {
+    padding: 1rem;
+    border-radius: 40%;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     cursor: pointer;
   }
 `;

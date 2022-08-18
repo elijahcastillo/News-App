@@ -6,6 +6,7 @@ import { GlobalStyles } from "./css/GlobalStyle.styled";
 
 import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const theme = {
   light: {

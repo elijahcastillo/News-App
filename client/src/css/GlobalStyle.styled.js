@@ -9,6 +9,10 @@ export const GlobalStyles = createGlobalStyle`
 
     }
 
+    html{
+        scroll-behavior: smooth;
+    }
+
 
     body{
         background-color: ${(props) => props.theme.background};
@@ -21,5 +25,11 @@ export const GlobalStyles = createGlobalStyle`
 
     img{
         width: 100%;
+    }
+
+    .save{
+        text-align: center;
+        font-size: 3em;
+        
     }
 `;
