@@ -6,7 +6,7 @@ export const Nav = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 10%;
-  margin-top: 10px;
+  margin-top: 15px;
 
   .logo {
     display: flex;
@@ -30,20 +30,56 @@ export const Nav = styled.div`
   .links {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
   }
 
   .links img {
-    height: 50%;
+    height: 40px;
+    width: 40px;
     cursor: pointer;
   }
 
   .always {
-    padding: 1rem;
-    border-radius: 40%;
     position: fixed;
     bottom: 20px;
     right: 20px;
     cursor: pointer;
+    width: 70px;
+    height: 70px;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 1;
+      transform: translateY(25px);
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .book img {
+    width: 40px;
+  }
+
+  .book {
+    position: relative;
+  }
+
+  .book::after {
+    content: "${({ count }) => count}";
+
+    width: 25px;
+    height: 25px;
+    background-color: ${(props) => props.theme.border};
+    display: block;
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
   }
 `;

@@ -7,6 +7,7 @@ export const List = styled.div`
   flex-direction: column;
   gap: 50px;
   margin-top: 60px;
+  margin-bottom: 50px;
 `;
 
 export const Item = styled.div`
@@ -19,6 +20,7 @@ export const Item = styled.div`
   display: flex;
   flex-direction: column;
   color: ${(props) => props.theme.text};
+  background-color: ${(props) => props.theme.inside};
 
   .infoTop {
     display: flex;
@@ -26,8 +28,9 @@ export const Item = styled.div`
     gap: 12px;
   }
 
-  .infoTop p a {
-    color: white;
+  .infoTop p a,
+  p {
+    color: ${(props) => props.theme.border};
     text-decoration: none;
   }
 
@@ -42,7 +45,24 @@ export const Item = styled.div`
     padding: 6px 14px;
     border-radius: 10px;
     border: none;
-    background-color: green;
+    background-color: #3dad41;
+    box-shadow: 0 4px 0 #369439;
     cursor: pointer;
+    color: white;
+    transition: all 150 ease-in-out;
+  }
+
+  .infoBott button:active {
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+
+  .del:active {
+    box-shadow: none;
+  }
+
+  .del {
+    background-color: #e03d31 !important;
+    box-shadow: 0 4px 0 #b43128 !important;
   }
 `;

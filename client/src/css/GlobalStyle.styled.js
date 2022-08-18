@@ -19,7 +19,7 @@ export const GlobalStyles = createGlobalStyle`
         min-height: 100vh;
         font-family: "Barlow";
         color: white;
-        transition: all 300ms;
+        transition: all 250ms;
         font-size: 0.75em;
     }
 
@@ -30,6 +30,6 @@ export const GlobalStyles = createGlobalStyle`
     .save{
         text-align: center;
         font-size: 3em;
-        
+        color: ${(props) => props.theme.text};
     }
 `;
