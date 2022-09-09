@@ -20,22 +20,23 @@ const NewsItem = () => {
   };
 
   const getSavedLengh = () => {
-    if (JSON.parse(localStorage.getItem("bookmark")).length > 0) {
+    if (localStorage.getItem("bookmark") != null) {
       const len = JSON.parse(localStorage.getItem("bookmark")).length;
       return len;
     }
   };
 
   useEffect(() => {
+    console.log(loading, error);
     dispatch(getPosts());
     dispatch(setCount(getSavedLengh()));
   }, []);
   return (
     <>
-      {loading || error ? (
+      {loading ? (
         <div>Not Here {error}</div>
       ) : (
-        articles.data.hits.map((post, i) => {
+        articles.data?.hits?.map((post, i) => {
           return (
             <Item>
               <div className="infoTop">

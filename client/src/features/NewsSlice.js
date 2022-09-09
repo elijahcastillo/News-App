@@ -5,7 +5,9 @@ const initialState = {
   loading: true,
   error: false,
   articles: [],
-  currTheme: false,
+  currTheme: localStorage.getItem("theme")
+    ? JSON.parse(localStorage.getItem("theme"))
+    : false,
   bookView: false,
   savedPosts: [],
   savedPostsCopy: [],
@@ -15,7 +17,7 @@ const initialState = {
 export const getPosts = createAsyncThunk("posts/getPosts", async (query) => {
   try {
     const res = await axios.get(
-      `https://hn.algolia.com/api/v1/search?query=${query ? query : "react"}`
+      `https://hn.algolia.com/api/v1/search?query=${query ? query : ""}`
     );
 
     return res;
@@ -45,6 +47,7 @@ export const NewsSlice = createSlice({
     },
     changeTheme: (state) => {
       state.currTheme = !state.currTheme;
+      localStorage.setItem("theme", state.currTheme);
     },
   },
   extraReducers(builder) {
@@ -57,7 +60,7 @@ export const NewsSlice = createSlice({
         state.articles = action.payload;
       })
       .addCase(getPosts.rejected, (state, action) => {
-        state.loading = false;
+        state.loading = true;
         state.error = true;
       });
   },

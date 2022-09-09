@@ -1,13 +1,16 @@
 import { Nav } from "../css/Navbar.styled";
-import hamburg from "../assets/burg.png";
+
 import { useDispatch, useSelector } from "react-redux";
 import { changeTheme, bookView } from "../features/NewsSlice";
 import up from "../assets/up-arrow.png";
 import bookmark from "../assets/bookmark.png";
+import light from "../assets/day.png";
+import dark from "../assets/moon.png";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const { savedPostsCount } = useSelector((state) => state.posts);
+  const { savedPostsCount, currTheme } = useSelector((state) => state.posts);
 
   const themeChange = () => {
     dispatch(changeTheme());
@@ -20,6 +23,13 @@ const Navbar = () => {
   const toTop = () => {
     window.scrollTo(0, 0);
   };
+
+  useEffect(() => {
+    console.log(savedPostsCount.payload);
+    if (localStorage.getItem("theme") === null) {
+      localStorage.setItem("theme", currTheme);
+    }
+  });
   return (
     <Nav count={savedPostsCount.payload}>
       <div className="logo">
@@ -27,7 +37,7 @@ const Navbar = () => {
       </div>
 
       <div className="links">
-        <img src={hamburg} onClick={themeChange} />
+        <img src={currTheme ? dark : light} onClick={themeChange} />
         <div className="book">
           <img src={bookmark} onClick={changeView} />
         </div>
