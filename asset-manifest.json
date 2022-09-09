@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/News-App/static/js/main.85ef8375.js",
+    "static/media/moon.png": "/News-App/static/media/moon.e61cb3fdd4ea00c96f80.png",
+    "static/media/day.png": "/News-App/static/media/day.1d1754f0daaebc6b550c.png",
+    "index.html": "/News-App/index.html",
+    "main.85ef8375.js.map": "/News-App/static/js/main.85ef8375.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.85ef8375.js"
+  ]
+}
